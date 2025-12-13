@@ -104,6 +104,11 @@ body {
     color: var(--dark);
     background-color: #fff;
     min-width: 320px;
+    max-width: 1920px;
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 html.no-scroll,

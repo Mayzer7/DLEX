@@ -98,6 +98,11 @@ body {
   color: var(--dark);
   background-color: #fff;
   min-width: 320px;
+  max-width: 1920px;
+  margin: 0 auto;
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 html.no-scroll,
@@ -183,6 +188,8 @@ input[type=number] {
   align-items: center;
   justify-content: space-between;
   padding: 32px 0px;
+  max-width: 1920px;
+  margin: 0 auto;
 }
 
 .header-left {
@@ -430,4 +437,76 @@ input[type=number] {
   inset: 5px;
   border-radius: 50%;
   background: rgb(157, 9, 124);
+}
+
+.optimize-payments {
+  padding: 96px 0px;
+  background-color: rgb(249, 249, 251);
+}
+
+.optimize-payments-info {
+  margin-top: 41px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.optimize-payments-title {
+  font-family: "Poppins Bold", sans-serif;
+  font-size: 20px;
+  color: var(--purple);
+  line-height: 140%;
+  margin-bottom: 24px;
+}
+
+.optimize-payments-desc {
+  font-family: "Poppins Regular", sans-serif;
+  font-size: 16px;
+  line-height: 180%;
+  color: rgba(18, 17, 39, 0.56);
+  margin-bottom: 12px;
+  max-width: 456px;
+  width: 100%;
+}
+
+.optimize-payments-image {
+  position: relative;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%), linear-gradient(to bottom, black 0%, black 90%, transparent 100%);
+  -webkit-mask-composite: intersect;
+  mask-image: linear-gradient(to right, transparent 0%, black 1%, black 94%, transparent 100%), linear-gradient(to bottom, black 0%, black 90%, transparent 100%);
+  mask-composite: intersect;
+}
+
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: "Poppins Regular", sans-serif;
+  font-size: 14px;
+  line-height: 180%;
+  color: var(--dark);
+  list-style: none;
+}
+
+.feature-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-icon svg {
+  display: block;
 }
