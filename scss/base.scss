@@ -1,0 +1,164 @@
+@font-face {
+  font-family: "Poppins Regular";
+  src: url("../fonts/Poppins-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins Medium";
+  src: url("../fonts/Poppins-Medium.ttf");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins Bold";
+  src: url("../fonts/Poppins-Bold.ttf");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins SemiBold";
+  src: url("../fonts/Poppins-SemiBold.ttf");
+  font-weight: 600;
+  font-style: normal;
+}
+
+
+:root {
+  --light-blue: #DAE7FC;
+  --dark: rgba(18, 17, 39, 1);
+  --gray: rgba(18, 17, 39, 0.72);
+  --gray-hover: rgba(18, 17, 39, 1);
+  --purple: rgba(68, 75, 211, 1);
+  --indigo: rgba(68, 75, 211, 1);
+  --pink: rgba(255, 240, 245, 1);
+
+  --error-text: #FE3B3B;
+}
+
+
+html {
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* 1. Убираем системный тап‑хайлайт */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+a {
+    color: var(--gray);
+    text-decoration: none;  
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--gray-hover);
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+}
+
+button {
+  font-family: 'Poppins Medium', sans-serif;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+svg {
+    vertical-align: middle;
+}
+
+body {
+    font-family: "Poppins Regular", sans-serif;
+    font-size: 14px;
+    color: var(--dark);
+    background-color: #fff;
+    min-width: 320px;
+}
+
+html.no-scroll,
+body.no-scroll {
+  overflow: hidden;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Для Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* Кастомный скролл на странице */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--light-blue);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--purple);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--purple);
+}
+
+/* Кастомный скролл для Firefox */
+
+@-moz-document url-prefix() {
+  * {
+    scrollbar-color: var(--purple) var(--light-blue); 
+    scrollbar-width: thin; 
+  }
+}
+
+.container {
+  padding: 0px 156px 0px 156px;
+}
+
+.block-title {
+  font-family: 'Poppins SemiBold', sans-serif;
+  font-size: 14px;
+  line-height: 170%;
+  color: var(--indigo);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}

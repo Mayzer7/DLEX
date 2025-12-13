@@ -1,0 +1,127 @@
+.why-dlex {
+    padding-top: 24px;
+    padding-bottom: 96px;
+}
+
+.why-dlex-title {
+    font-family: 'Poppins Bold', sans-serif;
+    font-size: 40px;
+    line-height: 140%;
+    color: var(--dark);
+    max-width: 600px;
+    width: 100%;
+}
+
+.why-dlex-cards {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.why-dlex-card {
+  position: relative;
+  padding: 56px 24px;
+  background: #fff;
+  border-radius: 12px;
+
+  box-shadow: 0 20px 50px rgba(18, 17, 39, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.why-dlex-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+
+  box-shadow: 0 30px 70px rgba(18, 17, 39, 0.12);
+  opacity: 0;
+
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.why-dlex-card:hover {
+  transform: translateY(-6px);
+}
+
+.why-dlex-card:hover::after {
+  opacity: 1;
+}
+
+.why-dlex-card-title {
+    font-family: 'Poppins Bold', sans-serif;
+    font-size: 16px;
+    margin-top: 24px;
+    margin-bottom: 16px;
+}
+
+.why-dlex-card-desc {
+    font-family: 'Poppins Regular', sans-serif;
+    font-size: 14px;
+    line-height: 180%;
+    color: rgba(18, 17, 39, 0.56);
+}
+
+.why-dlex-pagination {
+  margin-top: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+
+.pagination-arrow {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(236, 67, 179, 0.08);
+  color: var(--pink);
+  font-size: 20px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pagination-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(50, 51, 76, 1);
+  cursor: pointer;
+
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.pagination-dot:hover {
+  transform: scale(1.1);
+}
+
+.pagination-dot--active {
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: 2px solid rgba(157, 9, 124, 1);
+  position: relative;
+ 
+}
+
+.pagination-dot--active::after {
+  content: "";
+  position: absolute;
+  inset: 5px; 
+  border-radius: 50%;
+  background: rgba(157, 9, 124, 1);
+}
