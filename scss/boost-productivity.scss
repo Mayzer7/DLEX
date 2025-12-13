@@ -15,7 +15,7 @@
 
 .boost-productivity-title {
     font-family: 'Poppins Bold', sans-serif;
-    font-size: 44px;
+    font-size: clamp(1.375rem, 1.1rem + 1.38vw, 2.75rem);
     line-height: 140%;
     max-width: 620px;
     width: 100%;
@@ -23,7 +23,7 @@
 
 .boost-productivity-desc {
     font-family: 'Poppins Regular', sans-serif;
-    font-size: 20px;
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
     line-height: 180%;
     color: rgba(255, 255, 255, 0.56);
     max-width: 744px;
@@ -32,8 +32,12 @@
 
 .boost-productivity-btn {
     font-family: 'Poppins Medium', sans-serif;
-    font-size: 16px;
-    padding: 14px 32px;
+    font-size: clamp(0.875rem, 0.85rem + 0.13vw, 1rem);
+
+    padding: 
+        clamp(10px, 1vw, 14px)
+        clamp(20px, 3vw, 32px);
+
     background-color: white;
     color: var(--purple);
     border-radius: 8px;
@@ -44,5 +48,20 @@
 .boost-productivity-btn:hover {
     background-color: var(--purple);
     color: white;
-    border: 1px solid var(--dark);
+    border: 1px solid white;
+}
+
+@media (max-width: 700px) {
+    .you-need-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .you-need-left {
+        text-align: center;
+    }
+
+    .you-need-right {
+        justify-content: center;
+    }
 }

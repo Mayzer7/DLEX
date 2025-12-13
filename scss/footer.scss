@@ -1,0 +1,108 @@
+.footer {
+    .footer-content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        justify-content: space-between;
+        padding: 56px 0px 71px 0px;
+        border-bottom: 1px solid rgba(18, 17, 39, 0.12);
+    }
+
+    .footer-desc {
+        font-family: 'Poppins Regular', sans-serif;
+        font-size: 14px;
+        line-height: 180%;
+        color: rgba(18, 17, 39, 0.56);
+        max-width: 360px;
+        width: 100%;
+        margin-top: 24px;
+        margin-bottom: 24px;
+    }
+
+    .footer-icons-links {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+    }
+
+    .footer-icons-links a {
+        color: rgba(18, 17, 39, 0.32);
+    }
+
+    .footer-icons-links a:hover {
+        color: var(--purple);
+    }
+
+    .footer-nav {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(140px, 1fr));
+        gap: 64px;
+    }
+
+    .footer-nav-col {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .footer-nav-title {
+        font-family: 'Poppins SemiBold', sans-serif;
+        font-size: 14px;
+        line-height: 170%;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(18, 17, 39, 0.4);
+    }
+
+    .footer-nav-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        li a {
+            font-family: 'Poppins Regular', sans-serif;
+            font-size: 14px;
+            line-height: 180%;
+            color: rgba(18, 17, 39, 1);
+            transition: color 0.25s ease;
+
+            &:hover {
+            color: var(--purple);
+            }
+        }
+    }
+
+    .footer-copyright {
+        padding: 37px 0px 40px 0px;
+        text-align: center;
+    }
+
+    .footer-copyright-text {
+        font-family: 'Poppins Regular', sans-serif;
+        font-size: 16px;
+        line-height: 180%;
+        color: rgba(18, 17, 39, 0.56);
+    }
+
+    @media (max-width: 1420px) {
+        .footer-content {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .footer-right {
+            order: 1;
+        }
+
+        .footer-left {
+            order: 2;
+        }
+    }
+
+    @media (max-width: 850px) {
+        .footer-nav {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+    }
+}

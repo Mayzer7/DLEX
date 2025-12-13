@@ -153,13 +153,28 @@ input[type=number] {
 
 .block-title {
   font-family: "Poppins SemiBold", sans-serif;
-  font-size: 14px;
+  font-size: clamp(0.75rem, 0.725rem + 0.13vw, 0.875rem);
   line-height: 170%;
   color: var(--indigo);
   margin-bottom: 8px;
   text-transform: uppercase;
 }
 
+@media (max-width: 1400px) {
+  .container {
+    padding: 0px 78px 0px 78px;
+  }
+}
+@media (max-width: 1000px) {
+  .container {
+    padding: 0px 40px 0px 40px;
+  }
+}
+@media (max-width: 700px) {
+  .container {
+    padding: 0px 16px 0px 16px;
+  }
+}
 .header {
   position: fixed;
   top: 0;
@@ -225,6 +240,10 @@ input[type=number] {
   background-color: #5A62FF;
 }
 
+.header-logo img {
+  color: red;
+}
+
 .main-banner {
   display: flex;
   flex-direction: column;
@@ -237,7 +256,7 @@ input[type=number] {
 
 .main-banner-title {
   font-family: "Poppins Bold", sans-serif;
-  font-size: 56px;
+  font-size: clamp(1.625rem, 1.25rem + 1.88vw, 3.5rem);
   line-height: 120%;
   max-width: 910px;
   width: 100%;
@@ -245,7 +264,7 @@ input[type=number] {
 }
 
 .main-banner-desc {
-  font-size: 20px;
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
   color: var(--gray);
 }
 
@@ -303,7 +322,7 @@ input[type=number] {
 
 .why-dlex-title {
   font-family: "Poppins Bold", sans-serif;
-  font-size: 40px;
+  font-size: clamp(1.25rem, 1rem + 1.25vw, 2.5rem);
   line-height: 140%;
   color: var(--dark);
   max-width: 600px;
@@ -335,7 +354,7 @@ input[type=number] {
 .why-dlex-card {
   position: relative;
   box-sizing: border-box;
-  padding: 56px 24px;
+  padding: clamp(24px, 5vw, 56px) clamp(16px, 4vw, 24px);
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 20px 20px rgba(18, 17, 39, 0.08);
@@ -383,8 +402,8 @@ input[type=number] {
 }
 
 .pagination-arrow {
-  width: 56px;
-  height: 56px;
+  width: clamp(40px, 6vw, 56px);
+  height: clamp(40px, 6vw, 56px);
   border-radius: 50%;
   border: none;
   background: rgba(236, 67, 179, 0.08);
@@ -394,6 +413,12 @@ input[type=number] {
   align-items: center;
   justify-content: center;
   transition: background 0.3s ease, color 0.3s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pagination-arrow svg {
+  width: clamp(16px, 3vw, 24px);
+  height: clamp(16px, 3vw, 24px);
+  flex-shrink: 0;
 }
 
 .pagination-arrow.disabled {
@@ -444,6 +469,24 @@ input[type=number] {
   background: rgb(157, 9, 124);
 }
 
+@media (max-width: 1400px) {
+  .why-dlex-cards-wrapper {
+    padding: 0px 60px;
+  }
+  .why-dlex-cards {
+    padding: 40px 18px;
+  }
+}
+@media (max-width: 1000px) {
+  .why-dlex-cards-wrapper {
+    padding: 0px 24px;
+  }
+}
+@media (max-width: 700px) {
+  .why-dlex-cards-wrapper {
+    padding: 0px;
+  }
+}
 .optimize-payments {
   padding: 96px 0px;
   background-color: rgb(249, 249, 251);
@@ -453,14 +496,14 @@ input[type=number] {
   margin-top: 41px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 60px;
-  align-items: center;
+  gap: 40px;
+  align-items: flex-start;
   justify-content: space-between;
 }
 
 .optimize-payments-title {
   font-family: "Poppins Bold", sans-serif;
-  font-size: 20px;
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
   color: var(--purple);
   line-height: 140%;
   margin-bottom: 24px;
@@ -468,7 +511,7 @@ input[type=number] {
 
 .optimize-payments-desc {
   font-family: "Poppins Regular", sans-serif;
-  font-size: 16px;
+  font-size: clamp(0.75rem, 0.7rem + 0.25vw, 1rem);
   line-height: 180%;
   color: rgba(18, 17, 39, 0.56);
   margin-bottom: 12px;
@@ -483,6 +526,12 @@ input[type=number] {
   -webkit-mask-composite: intersect;
   mask-image: linear-gradient(to right, transparent 0%, black 1%, black 94%, transparent 100%), linear-gradient(to bottom, black 0%, black 90%, transparent 100%);
   mask-composite: intersect;
+}
+
+.optimize-payments-image img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 .feature-list {
@@ -517,6 +566,14 @@ input[type=number] {
   display: block;
 }
 
+@media (max-width: 1100px) {
+  .optimize-payments-info {
+    grid-template-columns: 1fr;
+  }
+  .optimize-payments-image img {
+    width: 100%;
+  }
+}
 .you-need {
   padding: 60px 0px;
 }
@@ -535,9 +592,10 @@ input[type=number] {
 
 .you-need-title {
   font-family: "Poppins Bold", sans-serif;
-  font-size: 32px;
+  font-size: clamp(1rem, 0.8rem + 1vw, 2rem);
   line-height: 140%;
   margin-bottom: 8px;
+  white-space: nowrap;
 }
 
 .you-need-title span {
@@ -546,18 +604,18 @@ input[type=number] {
 
 .you-need-desc {
   font-family: "Poppins Regular", sans-serif;
-  font-size: 18px;
+  font-size: clamp(0.875rem, 0.825rem + 0.25vw, 1.125rem);
   line-height: 180%;
   color: rgba(18, 17, 39, 0.56);
 }
 
 .you-need-btn {
   font-family: "Poppins Medium", sans-serif;
-  font-size: 16px;
+  font-size: clamp(0.875rem, 0.85rem + 0.13vw, 1rem);
   background-color: var(--purple);
   color: #ffffff;
   border-radius: 8px;
-  padding: 14px 32px;
+  padding: clamp(0.7em, 1vw, 0.9em) clamp(1.4em, 3vw, 2em);
   transition: background-color 0.3s ease;
 }
 
@@ -582,7 +640,7 @@ input[type=number] {
 
 .boost-productivity-title {
   font-family: "Poppins Bold", sans-serif;
-  font-size: 44px;
+  font-size: clamp(1.375rem, 1.1rem + 1.38vw, 2.75rem);
   line-height: 140%;
   max-width: 620px;
   width: 100%;
@@ -590,7 +648,7 @@ input[type=number] {
 
 .boost-productivity-desc {
   font-family: "Poppins Regular", sans-serif;
-  font-size: 20px;
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
   line-height: 180%;
   color: rgba(255, 255, 255, 0.56);
   max-width: 744px;
@@ -599,8 +657,8 @@ input[type=number] {
 
 .boost-productivity-btn {
   font-family: "Poppins Medium", sans-serif;
-  font-size: 16px;
-  padding: 14px 32px;
+  font-size: clamp(0.875rem, 0.85rem + 0.13vw, 1rem);
+  padding: clamp(10px, 1vw, 14px) clamp(20px, 3vw, 32px);
   background-color: white;
   color: var(--purple);
   border-radius: 8px;
@@ -611,5 +669,108 @@ input[type=number] {
 .boost-productivity-btn:hover {
   background-color: var(--purple);
   color: white;
-  border: 1px solid var(--dark);
+  border: 1px solid white;
+}
+
+@media (max-width: 700px) {
+  .you-need-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .you-need-left {
+    text-align: center;
+  }
+  .you-need-right {
+    justify-content: center;
+  }
+}
+.footer .footer-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-content: space-between;
+  padding: 56px 0px 71px 0px;
+  border-bottom: 1px solid rgba(18, 17, 39, 0.12);
+}
+.footer .footer-desc {
+  font-family: "Poppins Regular", sans-serif;
+  font-size: 14px;
+  line-height: 180%;
+  color: rgba(18, 17, 39, 0.56);
+  max-width: 360px;
+  width: 100%;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+.footer .footer-icons-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.footer .footer-icons-links a {
+  color: rgba(18, 17, 39, 0.32);
+}
+.footer .footer-icons-links a:hover {
+  color: var(--purple);
+}
+.footer .footer-nav {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(140px, 1fr));
+  gap: 64px;
+}
+.footer .footer-nav-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.footer .footer-nav-title {
+  font-family: "Poppins SemiBold", sans-serif;
+  font-size: 14px;
+  line-height: 170%;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(18, 17, 39, 0.4);
+}
+.footer .footer-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.footer .footer-nav-list li a {
+  font-family: "Poppins Regular", sans-serif;
+  font-size: 14px;
+  line-height: 180%;
+  color: rgb(18, 17, 39);
+  transition: color 0.25s ease;
+}
+.footer .footer-nav-list li a:hover {
+  color: var(--purple);
+}
+.footer .footer-copyright {
+  padding: 37px 0px 40px 0px;
+  text-align: center;
+}
+.footer .footer-copyright-text {
+  font-family: "Poppins Regular", sans-serif;
+  font-size: 16px;
+  line-height: 180%;
+  color: rgba(18, 17, 39, 0.56);
+}
+@media (max-width: 1420px) {
+  .footer .footer-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .footer .footer-right {
+    order: 1;
+  }
+  .footer .footer-left {
+    order: 2;
+  }
+}
+@media (max-width: 850px) {
+  .footer .footer-nav {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
 }

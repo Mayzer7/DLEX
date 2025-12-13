@@ -6,35 +6,35 @@ if (header) {
     let ticking = false;
 
     window.addEventListener('scroll', () => {
-    if (ticking) return;
+        if (ticking) return;
 
-    window.requestAnimationFrame(() => {
-        const currentScrollY = window.scrollY;
+        window.requestAnimationFrame(() => {
+            const currentScrollY = window.scrollY;
 
-        if (currentScrollY <= 0) {
-        header.classList.remove('header--hidden', 'header--scrolled');
-        lastScrollY = currentScrollY;
-        ticking = false;
-        return;
-        }
+            if (currentScrollY <= 0) {
+                header.classList.remove('header--hidden', 'header--scrolled');
+                lastScrollY = currentScrollY;
+                ticking = false;
+                return;
+            }
 
-        // scroll down
-        if (currentScrollY > lastScrollY && currentScrollY > 80) {
-        header.classList.add('header--hidden');
-        header.classList.remove('header--scrolled');
-        }
+            // scroll down
+            if (currentScrollY > lastScrollY && currentScrollY > 80) {
+                header.classList.add('header--hidden');
+                header.classList.remove('header--scrolled');
+            }
 
-        // scroll up
-        if (currentScrollY < lastScrollY) {
-        header.classList.remove('header--hidden');
-        header.classList.add('header--scrolled');
-        }
+            // scroll up
+            if (currentScrollY < lastScrollY) {
+                header.classList.remove('header--hidden');
+                header.classList.add('header--scrolled');
+            }
 
-        lastScrollY = currentScrollY;
-        ticking = false;
-    });
+            lastScrollY = currentScrollY;
+            ticking = false;
+        });
 
-    ticking = true;
+        ticking = true;
     });
 }
 
@@ -47,12 +47,12 @@ if (video) {
 
     const toggleVideo = () => {
         if (video.paused) {
-        video.muted = false;
-        video.play();
-        playBtn.classList.add('is-hidden');
+            video.muted = false;
+            video.play();
+            playBtn.classList.add('is-hidden');
         } else {
-        video.pause();
-        playBtn.classList.remove('is-hidden');
+            video.pause();
+            playBtn.classList.remove('is-hidden');
         }
     };
 

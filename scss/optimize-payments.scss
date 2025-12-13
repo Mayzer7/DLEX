@@ -7,14 +7,14 @@
     margin-top: 41px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 60px;
-    align-items: center;
+    gap: 40px;
+    align-items: flex-start;
     justify-content: space-between;
 }
 
 .optimize-payments-title {
     font-family: 'Poppins Bold', sans-serif;
-    font-size: 20px;
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
     color: var(--purple);
     line-height: 140%;
     margin-bottom: 24px;
@@ -22,7 +22,7 @@
 
 .optimize-payments-desc {
     font-family: 'Poppins Regular', sans-serif;
-    font-size: 16px;
+    font-size: clamp(0.75rem, 0.7rem + 0.25vw, 1rem);
     line-height: 180%;
     color: rgba(18, 17, 39, 0.56);
     margin-bottom: 12px;
@@ -67,7 +67,12 @@
     );
 
   mask-composite: intersect;
+}
 
+.optimize-payments-image img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 .feature-list {
@@ -103,4 +108,14 @@
 
 .feature-icon svg {
   display: block;
+}
+
+@media (max-width: 1100px) {
+  .optimize-payments-info {
+    grid-template-columns: 1fr;
+  }
+
+  .optimize-payments-image img {
+    width: 100%;
+  }
 }

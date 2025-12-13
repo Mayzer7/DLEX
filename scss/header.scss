@@ -28,8 +28,6 @@
   transform: translateY(-100%);
 }
 
-
-
 .header-inner {
     display: flex;
     align-items: center;
@@ -70,4 +68,8 @@
 
 .sign-up-btn:hover {
   background-color: #5A62FF;   
+}
+
+.header-logo img {
+  color: red;
 }

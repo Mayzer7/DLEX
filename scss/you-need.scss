@@ -16,9 +16,10 @@
 
 .you-need-title {
     font-family: 'Poppins Bold', sans-serif;
-    font-size: 32px;
+    font-size: clamp(1rem, 0.8rem + 1vw, 2rem);
     line-height: 140%;
     margin-bottom: 8px;
+    white-space: nowrap;
 }
 
 .you-need-title span {
@@ -27,20 +28,22 @@
 
 .you-need-desc {
     font-family: 'Poppins Regular', sans-serif;
-    font-size: 18px;
+    font-size: clamp(0.875rem, 0.825rem + 0.25vw, 1.125rem);
     line-height: 180%;
     color: rgba(18, 17, 39, 0.56);
 }
 
 .you-need-btn {
   font-family: 'Poppins Medium', sans-serif;
-  font-size: 16px;
+  font-size: clamp(0.875rem, 0.85rem + 0.13vw, 1rem);
 
   background-color: var(--purple);   
   color: #ffffff;
 
   border-radius: 8px;
-  padding: 14px 32px;
+  padding:
+    clamp(0.7em, 1vw, 0.9em)
+    clamp(1.4em, 3vw, 2em);
 
   transition: background-color 0.3s ease;
 }

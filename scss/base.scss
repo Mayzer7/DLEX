@@ -161,9 +161,27 @@ input[type=number] {
 
 .block-title {
   font-family: 'Poppins SemiBold', sans-serif;
-  font-size: 14px;
+  font-size: clamp(0.75rem, 0.725rem + 0.13vw, 0.875rem);
   line-height: 170%;
   color: var(--indigo);
   margin-bottom: 8px;
   text-transform: uppercase;
+}
+
+@media (max-width: 1400px) {
+  .container {
+    padding: 0px 78px 0px 78px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .container {
+    padding: 0px 40px 0px 40px;
+  }
+}
+
+@media (max-width: 700px) {
+  .container {
+    padding: 0px 16px 0px 16px;
+  }
 }

@@ -10,7 +10,7 @@
 
 .main-banner-title {
     font-family: 'Poppins Bold', sans-serif;
-    font-size: 56px;
+    font-size: clamp(1.625rem, 1.25rem + 1.88vw, 3.5rem);
     line-height: 120%;
     max-width: 910px;
     width: 100%;
@@ -18,7 +18,7 @@
 }
 
 .main-banner-desc {
-    font-size: 20px;
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
     color: var(--gray);
 }
 
