@@ -1,0 +1,50 @@
+.you-need {
+    padding: 60px 0px;
+}
+
+.you-need-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-content: space-between;
+}
+
+.you-need-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.you-need-title {
+    font-family: 'Poppins Bold', sans-serif;
+    font-size: 32px;
+    line-height: 140%;
+    margin-bottom: 8px;
+}
+
+.you-need-title span {
+    color: var(--purple);
+}
+
+.you-need-desc {
+    font-family: 'Poppins Regular', sans-serif;
+    font-size: 18px;
+    line-height: 180%;
+    color: rgba(18, 17, 39, 0.56);
+}
+
+.you-need-btn {
+  font-family: 'Poppins Medium', sans-serif;
+  font-size: 16px;
+
+  background-color: var(--purple);   
+  color: #ffffff;
+
+  border-radius: 8px;
+  padding: 14px 32px;
+
+  transition: background-color 0.3s ease;
+}
+
+.you-need-btn:hover {
+  background-color: #5A62FF;   
+}
