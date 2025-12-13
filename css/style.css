@@ -110,6 +110,13 @@ body.no-scroll {
   overflow: hidden;
 }
 
+input {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+}
+
 input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -772,5 +779,184 @@ input[type=number] {
   .footer .footer-nav {
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
+  }
+}
+
+.join-club-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  padding: 0px 16px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.join-club-modal-content {
+  transform: scale(0.96) translateY(20px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  background: #fff;
+  max-width: 950px;
+  width: 100%;
+  border-radius: 24px;
+}
+
+.join-club-modal.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.join-club-modal.is-active .join-club-modal-content {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+.join-club-modal-content-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  padding: 0px 80px;
+}
+
+.join-the-club-modal-content-right img {
+  display: block;
+  border-top-right-radius: 24px;
+  border-bottom-right-radius: 24px;
+}
+
+.close-club-modal {
+  position: absolute;
+  top: clamp(12px, 2vw, 18px);
+  right: clamp(12px, 2vw, 23px);
+  width: clamp(40px, 8vw, 60px);
+  height: clamp(40px, 8vw, 60px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: rgb(217, 217, 217);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.close-club-modal:hover {
+  background-color: var(--dark);
+}
+
+.close-club-modal svg {
+  width: clamp(18px, 4vw, 32px);
+  height: clamp(18px, 4vw, 32px);
+}
+
+.join-club-modal-title {
+  margin-top: 30px;
+  margin-bottom: 14px;
+  font-family: "Poppins SemiBold", sans-serif;
+  font-size: clamp(1.25rem, 1rem + 1.25vw, 2.5rem);
+  color: var(--dark);
+}
+
+.join-club-modal-desc {
+  font-family: "Poppins SemiBold", sans-serif;
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
+  margin-bottom: clamp(20px, 4vw, 40px);
+}
+
+.join-club-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: left;
+}
+
+.join-club-form input {
+  border: 1px solid rgb(217, 217, 217);
+  border-radius: 10px;
+  padding: clamp(12px, 1.5vw, 16px) clamp(16px, 3vw, 24px);
+  font-family: "Poppins Regular", sans-serif;
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
+  outline: none;
+  transition: all 0.3s ease;
+}
+.join-club-form input:focus {
+  border: 1px solid var(--dark);
+}
+
+.form-input {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-input-error {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #ff7f7b;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+
+.form-input.has-error .form-input-error {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.send-form-btn {
+  margin-top: clamp(10px, 4vw, 10px);
+  margin-bottom: clamp(16px, 3vw, 24px);
+  font-family: "Poppins SemiBold", sans-serif;
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
+  padding: clamp(12px, 1.5vw, 16px) clamp(16px, 3vw, 24px);
+  background-color: rgb(0, 0, 0);
+  color: #fff;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.send-form-btn:hover {
+  background-color: white;
+  color: var(--dark);
+  border: 1px solid var(--dark);
+}
+
+.join-club-policy {
+  font-family: "Poppins Regular", sans-serif;
+  font-size: clamp(0.75rem, 0.713rem + 0.19vw, 0.938rem);
+  line-height: 120%;
+  color: rgb(141, 141, 141);
+  text-align: left;
+}
+
+@media (max-width: 1050px) {
+  .join-the-club-modal-content-right {
+    display: none;
+  }
+  .join-club-modal-content {
+    grid-template-columns: 1fr;
+    max-width: 650px;
+  }
+  .join-club-modal-content-left {
+    padding: 80px;
+  }
+  .join-club-form {
+    max-width: 550px;
+  }
+}
+@media (max-width: 700px) {
+  .join-club-modal-content-left {
+    padding: 40px 20px 40px 20px;
   }
 }

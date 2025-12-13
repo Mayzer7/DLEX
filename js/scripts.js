@@ -62,8 +62,6 @@ if (video) {
 
 
 
-
-
 // Swiper
 
 const whyDlexCards = document.querySelector('.why-dlex-cards');
@@ -146,3 +144,72 @@ if (whyDlexCards) {
     });
 }
 
+
+// Join the club modal
+const joinClubModal = document.querySelector('.join-club-modal');
+const closeJoinClubBtn = document.querySelector('.close-club-modal');
+
+if (joinClubModal) {
+    function openJoinClubModal() {
+        if (!joinClubModal) return;
+
+        joinClubModal.classList.add('is-active');
+        document.documentElement.classList.add('no-scroll');
+    }
+
+    function closeJoinClubModal() {
+        if (!joinClubModal) return;
+
+        joinClubModal.classList.remove('is-active');
+        document.documentElement.classList.remove('no-scroll');
+    }
+
+
+    joinClubModal.addEventListener('click', (event) => {
+        if (event.target === joinClubModal) {
+            closeJoinClubModal();
+        }
+    });
+}
+
+
+// Join the club form
+const joinClubForm = document.querySelector('.join-club-form');
+
+if (joinClubForm) {
+    const emailInput = joinClubForm.querySelector('input[type="email"]');
+    const inputWrapper = joinClubForm.querySelector('.form-input');
+    const errorText = joinClubForm.querySelector('.form-input-error');
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    joinClubForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const email = emailInput.value.trim();
+
+        if (!email) {
+            errorText.textContent = 'Please enter email';
+            inputWrapper.classList.add('has-error');
+            return;
+        }
+
+        if (!emailRegex.test(email)) {
+            errorText.textContent = 'Please enter a valid email';
+            inputWrapper.classList.add('has-error');
+            return;
+        }
+
+        inputWrapper.classList.remove('has-error');
+
+        console.log({
+            email: email
+        });
+
+        joinClubForm.reset();
+    });
+
+    emailInput.addEventListener('input', () => {
+        inputWrapper.classList.remove('has-error');
+    });
+}
