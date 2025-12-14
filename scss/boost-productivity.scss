@@ -4,7 +4,7 @@
 }
 
 .boost-productivity-content {
-    padding: 96px 0px;
+    padding: clamp(40px, 8vw, 96px) 0;
     display: flex;
     flex-direction: column;
     gap: 20px;

@@ -725,6 +725,9 @@ input[type=number] {
   .arrow-icon-mobile {
     bottom: -80px;
   }
+  .main-banner {
+    padding-bottom: 130px;
+  }
 }
 @media (max-width: 472px) {
   .main-banner-title-icon-second {
@@ -747,8 +750,8 @@ input[type=number] {
   }
 }
 .why-dlex {
-  padding-top: 24px;
-  padding-bottom: 96px;
+  padding-top: clamp(16px, 3vw, 24px);
+  padding-bottom: clamp(40px, 8vw, 96px);
 }
 
 .why-dlex-title {
@@ -813,14 +816,14 @@ input[type=number] {
 
 .why-dlex-card-title {
   font-family: "Poppins Bold", sans-serif;
-  font-size: 16px;
+  font-size: clamp(0.875rem, 0.85rem + 0.13vw, 1rem);
   margin-top: 24px;
   margin-bottom: 16px;
 }
 
 .why-dlex-card-desc {
   font-family: "Poppins Regular", sans-serif;
-  font-size: 14px;
+  font-size: clamp(0.75rem, 0.725rem + 0.13vw, 0.875rem);
   line-height: 180%;
   color: rgba(18, 17, 39, 0.56);
 }
@@ -871,8 +874,8 @@ input[type=number] {
 }
 
 .pagination-dot {
-  width: 8px;
-  height: 8px;
+  width: clamp(6px, 1.5vw, 8px);
+  height: clamp(6px, 1.5vw, 8px);
   border-radius: 50%;
   border: none;
   background: rgb(50, 51, 76);
@@ -885,17 +888,17 @@ input[type=number] {
 }
 
 .pagination-dot--active {
-  width: 24px;
-  height: 24px;
+  width: clamp(16px, 4vw, 24px);
+  height: clamp(16px, 4vw, 24px);
   background: transparent;
-  border: 2px solid rgb(157, 9, 124);
+  border: clamp(1.5px, 0.4vw, 2px) solid rgb(157, 9, 124);
   position: relative;
 }
 
 .pagination-dot--active::after {
   content: "";
   position: absolute;
-  inset: 5px;
+  inset: clamp(3px, 0.8vw, 5px);
   border-radius: 50%;
   background: rgb(157, 9, 124);
 }
@@ -919,7 +922,7 @@ input[type=number] {
   }
 }
 .optimize-payments {
-  padding: 96px 0px;
+  padding: clamp(40px, 8vw, 96px) 0;
   background-color: rgb(249, 249, 251);
 }
 
@@ -978,7 +981,7 @@ input[type=number] {
   align-items: center;
   gap: 12px;
   font-family: "Poppins Regular", sans-serif;
-  font-size: 14px;
+  font-size: clamp(0.75rem, 0.725rem + 0.13vw, 0.875rem);
   line-height: 180%;
   color: var(--dark);
   list-style: none;
@@ -1006,7 +1009,7 @@ input[type=number] {
   }
 }
 .you-need {
-  padding: 60px 0px;
+  padding: clamp(32px, 6vw, 60px) 0;
 }
 
 .you-need-content {
@@ -1060,7 +1063,7 @@ input[type=number] {
 }
 
 .boost-productivity-content {
-  padding: 96px 0px;
+  padding: clamp(40px, 8vw, 96px) 0;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -1120,7 +1123,7 @@ input[type=number] {
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
   justify-content: space-between;
-  padding: 56px 0px 71px 0px;
+  padding: clamp(24px, 6vw, 56px) 0 clamp(32px, 7vw, 71px);
   border-bottom: 1px solid rgba(18, 17, 39, 0.12);
 }
 .footer .footer-desc {
@@ -1178,7 +1181,7 @@ input[type=number] {
   color: var(--purple);
 }
 .footer .footer-copyright {
-  padding: 37px 0px 40px 0px;
+  padding: clamp(16px, 5vw, 37px) 0 clamp(20px, 6vw, 40px);
   text-align: center;
 }
 .footer .footer-copyright-text {

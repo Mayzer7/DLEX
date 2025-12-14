@@ -1,6 +1,6 @@
 .why-dlex {
-    padding-top: 24px;
-    padding-bottom: 96px;
+    padding-top: clamp(16px, 3vw, 24px);
+    padding-bottom: clamp(40px, 8vw, 96px);
 }
 
 .why-dlex-title {
@@ -102,14 +102,14 @@
 
 .why-dlex-card-title {
     font-family: 'Poppins Bold', sans-serif;
-    font-size: 16px;
+    font-size: clamp(0.875rem, 0.85rem + 0.13vw, 1rem);
     margin-top: 24px;
     margin-bottom: 16px;
 }
 
 .why-dlex-card-desc {
     font-family: 'Poppins Regular', sans-serif;
-    font-size: 14px;
+    font-size: clamp(0.75rem, 0.725rem + 0.13vw, 0.875rem);
     line-height: 180%;
     color: rgba(18, 17, 39, 0.56);
 }
@@ -175,8 +175,8 @@
 }
 
 .pagination-dot {
-  width: 8px;
-  height: 8px;
+  width: clamp(6px, 1.5vw, 8px);
+  height: clamp(6px, 1.5vw, 8px);
   border-radius: 50%;
   border: none;
   background: rgba(50, 51, 76, 1);
@@ -190,10 +190,10 @@
 }
 
 .pagination-dot--active {
-  width: 24px;
-  height: 24px;
+  width: clamp(16px, 4vw, 24px);
+  height: clamp(16px, 4vw, 24px);
   background: transparent;
-  border: 2px solid rgba(157, 9, 124, 1);
+  border: clamp(1.5px, 0.4vw, 2px) solid rgba(157, 9, 124, 1);
   position: relative;
  
 }
@@ -201,7 +201,7 @@
 .pagination-dot--active::after {
   content: "";
   position: absolute;
-  inset: 5px; 
+  inset: clamp(3px, 0.8vw, 5px);
   border-radius: 50%;
   background: rgba(157, 9, 124, 1);
 }

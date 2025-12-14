@@ -4,7 +4,8 @@
         grid-template-columns: repeat(2, 1fr);
         align-items: center;
         justify-content: space-between;
-        padding: 56px 0px 71px 0px;
+        padding:
+        clamp(24px, 6vw, 56px) 0 clamp(32px, 7vw, 71px);
         border-bottom: 1px solid rgba(18, 17, 39, 0.12);
     }
 
@@ -70,12 +71,12 @@
             color: var(--purple);
             }
         }
-    }
+    }   
 
     .footer-copyright {
-        padding: 37px 0px 40px 0px;
-        text-align: center;
-    }
+    padding: clamp(16px, 5vw, 37px) 0 clamp(20px, 6vw, 40px);
+    text-align: center;
+}
 
     .footer-copyright-text {
         font-family: 'Poppins Regular', sans-serif;
