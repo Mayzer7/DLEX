@@ -10,20 +10,20 @@ if (header) {
             const currentScrollY = window.scrollY;
 
             if (currentScrollY <= 0) {
-            header.classList.remove('header--hidden', 'header--scrolled');
-            lastScrollY = currentScrollY;
-            ticking = false;
+                header.classList.remove('header--hidden', 'header--scrolled');
+                lastScrollY = currentScrollY;
+                ticking = false;
             return;
             }
 
             if (currentScrollY > lastScrollY && currentScrollY > 80) {
-            header.classList.add('header--hidden');
-            header.classList.remove('header--scrolled');
+                header.classList.add('header--hidden');
+                header.classList.remove('header--scrolled');
             }
 
             if (currentScrollY < lastScrollY) {
-            header.classList.remove('header--hidden');
-            header.classList.add('header--scrolled');
+                header.classList.remove('header--hidden');
+                header.classList.add('header--scrolled');
             }
 
             lastScrollY = currentScrollY;
