@@ -6,10 +6,6 @@ if (header) {
     let ticking = false;
 
     window.addEventListener('scroll', () => {
-        if (isMenuOpen) return; 
-
-        if (ticking) return;
-
         window.requestAnimationFrame(() => {
             const currentScrollY = window.scrollY;
 
@@ -85,24 +81,6 @@ if (burgerMenu) {
         }
     });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // Video
