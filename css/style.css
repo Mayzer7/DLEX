@@ -108,6 +108,7 @@ body {
 html.no-scroll,
 body.no-scroll {
   overflow: hidden;
+  touch-action: none;
 }
 
 input {
@@ -194,7 +195,7 @@ input[type=number] {
   will-change: transform;
   border-bottom: 1px solid transparent;
   transition: transform 0.5s ease, border-color 0.25s ease;
-  padding: 0px 86px;
+  padding: 0px 156px;
 }
 
 .header--scrolled {
@@ -226,6 +227,10 @@ input[type=number] {
   gap: 48px;
 }
 
+.header-links a {
+  font-family: "Poppins Medium", sans-serif;
+}
+
 .header-buttons {
   display: flex;
   align-items: center;
@@ -251,6 +256,147 @@ input[type=number] {
   color: red;
 }
 
+.burger-menu {
+  position: fixed;
+  top: 74.5px;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: white;
+  z-index: 9999;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0px 40px;
+  box-shadow: none;
+  display: none;
+}
+
+.burger-menu.active {
+  transform: translateX(0);
+}
+
+.burger-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+}
+
+.burger-nav a {
+  font-family: "Poppins Medium", sans-serif;
+  font-size: 14px;
+  color: var(--dark);
+  padding: 12px;
+  border-bottom: 1px solid var(--dark);
+  transition: color 0.3s ease;
+}
+
+.burger-buttons {
+  margin-top: 20px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.burger-buttons button {
+  padding: 12px 24px;
+  width: 100%;
+}
+
+.burger-buttons .sign-in-btn {
+  background-color: var(--dark);
+  color: white;
+  border-radius: 6px;
+}
+
+.burger-menu-btn {
+  position: relative;
+  z-index: 1002;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  padding: 10px;
+  background-color: white;
+  border-radius: 100px;
+  transition: background-color 0.3s ease;
+}
+
+.burger-menu-btn span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: var(--dark);
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+}
+
+.burger-menu-btn.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+  width: 20px;
+}
+
+.burger-menu-btn.active span:nth-child(2) {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.burger-menu-btn.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+  width: 20px;
+}
+
+@media (max-width: 1400px) {
+  .header {
+    padding: 0px 78px;
+  }
+}
+@media (max-width: 1000px) {
+  .header {
+    padding: 0px 40px;
+  }
+  .header-inner {
+    padding: 24px 0px;
+  }
+}
+@media (max-width: 900px) {
+  .header-links {
+    display: none;
+  }
+  .burger-menu-btn {
+    display: flex;
+  }
+  .burger-menu {
+    display: block;
+  }
+  .header-inner {
+    padding: 16px 0px;
+  }
+}
+@media (max-width: 700px) {
+  .header {
+    padding: 0px 16px;
+  }
+  .burger-menu {
+    padding: 0px 16px;
+  }
+}
+@media (max-width: 400px) {
+  .header-buttons .sign-in-btn,
+  .header-buttons .sign-up-btn {
+    display: none;
+  }
+  .burger-buttons {
+    display: flex;
+  }
+}
 .main-banner {
   display: flex;
   flex-direction: column;

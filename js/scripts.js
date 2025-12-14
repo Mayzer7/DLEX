@@ -6,28 +6,28 @@ if (header) {
     let ticking = false;
 
     window.addEventListener('scroll', () => {
+        if (isMenuOpen) return; 
+
         if (ticking) return;
 
         window.requestAnimationFrame(() => {
             const currentScrollY = window.scrollY;
 
             if (currentScrollY <= 0) {
-                header.classList.remove('header--hidden', 'header--scrolled');
-                lastScrollY = currentScrollY;
-                ticking = false;
-                return;
+            header.classList.remove('header--hidden', 'header--scrolled');
+            lastScrollY = currentScrollY;
+            ticking = false;
+            return;
             }
 
-            // scroll down
             if (currentScrollY > lastScrollY && currentScrollY > 80) {
-                header.classList.add('header--hidden');
-                header.classList.remove('header--scrolled');
+            header.classList.add('header--hidden');
+            header.classList.remove('header--scrolled');
             }
 
-            // scroll up
             if (currentScrollY < lastScrollY) {
-                header.classList.remove('header--hidden');
-                header.classList.add('header--scrolled');
+            header.classList.remove('header--hidden');
+            header.classList.add('header--scrolled');
             }
 
             lastScrollY = currentScrollY;
@@ -37,6 +37,72 @@ if (header) {
         ticking = true;
     });
 }
+
+
+
+
+// Burger
+
+const burgerBtn = document.getElementById('burger');
+const burgerMenu = document.getElementById('burgerMenu');
+
+if (burgerMenu) {
+    const overlay = document.createElement('div');
+    overlay.className = 'burger-overlay';
+    document.body.appendChild(overlay);
+    
+    function toggleMenu() {
+        burgerBtn.classList.toggle('active');
+        burgerMenu.classList.toggle('active');
+        overlay.classList.toggle('active');
+
+        const isActive = burgerMenu.classList.contains('active');
+        isMenuOpen = isActive;
+
+        if (isActive) {
+            header.classList.remove('header--hidden');
+            header.classList.add('header--scrolled');
+
+            lastScrollY = window.scrollY; 
+            document.documentElement.classList.add('no-scroll');
+        } else {
+            document.documentElement.classList.remove('no-scroll');
+        }
+    }
+    
+    burgerBtn.addEventListener('click', toggleMenu);
+    
+    overlay.addEventListener('click', toggleMenu);
+    burgerMenu.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') {
+            toggleMenu();
+        }
+    });
+    
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && burgerMenu.classList.contains('active')) {
+            toggleMenu();
+        }
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Video
@@ -170,6 +236,8 @@ if (joinClubModal) {
             closeJoinClubModal();
         }
     });
+
+ 
 }
 
 
@@ -213,3 +281,8 @@ if (joinClubForm) {
         inputWrapper.classList.remove('has-error');
     });
 }
+
+
+
+
+
