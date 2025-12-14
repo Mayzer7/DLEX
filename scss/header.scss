@@ -63,6 +63,18 @@
     padding: 8px 24px;
 }
 
+.sign-in-btn {
+  border-radius: 6px;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+  color: var(--dark);
+  background-color: #fff;
+}
+
+.sign-in-btn:hover {
+  border: 1px solid var(--dark);
+}
+
 .sign-up-btn {
     background-color: var(--purple);
     color: white;
@@ -80,7 +92,7 @@
 
 
 // Burger menu
-.burger-menu {
+.burger-menu  {
     position: fixed;
     top: 74.5px;
     left: 0;
@@ -219,6 +231,11 @@
 
   .burger-menu {
     padding: 0px 16px;
+    top: 66.5px;
+  }
+
+  .header-inner {
+    padding: 12px 0px;
   }
 }
 

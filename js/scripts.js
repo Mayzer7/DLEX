@@ -1,85 +1,123 @@
-// header scroll animation
 const header = document.querySelector('.header');
-
-if (header) {
-    let lastScrollY = window.scrollY;
-    let ticking = false;
-
-    window.addEventListener('scroll', () => {
-        window.requestAnimationFrame(() => {
-            const currentScrollY = window.scrollY;
-
-            if (currentScrollY <= 0) {
-                header.classList.remove('header--hidden', 'header--scrolled');
-                lastScrollY = currentScrollY;
-                ticking = false;
-            return;
-            }
-
-            if (currentScrollY > lastScrollY && currentScrollY > 80) {
-                header.classList.add('header--hidden');
-                header.classList.remove('header--scrolled');
-            }
-
-            if (currentScrollY < lastScrollY) {
-                header.classList.remove('header--hidden');
-                header.classList.add('header--scrolled');
-            }
-
-            lastScrollY = currentScrollY;
-            ticking = false;
-        });
-
-        ticking = true;
-    });
-}
-
-
-
-
-// Burger
-
 const burgerBtn = document.getElementById('burger');
 const burgerMenu = document.getElementById('burgerMenu');
 
-if (burgerMenu) {
-    const overlay = document.createElement('div');
-    overlay.className = 'burger-overlay';
-    document.body.appendChild(overlay);
-    
-    function toggleMenu() {
-        burgerBtn.classList.toggle('active');
-        burgerMenu.classList.toggle('active');
-        overlay.classList.toggle('active');
+let lastScrollY = window.scrollY || 0;
+let ticking = false;
+let isMenuOpen = false;
 
-        const isActive = burgerMenu.classList.contains('active');
-        isMenuOpen = isActive;
+let lockedScrollPos = 0;
+function lockScroll() {
+  lockedScrollPos = window.scrollY || 0;
+  document.documentElement.classList.add('no-scroll'); 
+  document.body.style.position = 'fixed';
+  document.body.style.top = `-${lockedScrollPos}px`;
+  document.body.style.left = '0';
+  document.body.style.right = '0';
+}
 
-        if (isActive) {
-            header.classList.remove('header--hidden');
-            header.classList.add('header--scrolled');
+function unlockScroll() {
+  document.documentElement.classList.remove('no-scroll');
+  document.body.style.position = '';
+  document.body.style.top = '';
+  document.body.style.left = '';
+  document.body.style.right = '';
 
-            lastScrollY = window.scrollY; 
-            document.documentElement.classList.add('no-scroll');
-        } else {
-            document.documentElement.classList.remove('no-scroll');
+  window.scrollTo(0, lockedScrollPos);
+  lastScrollY = lockedScrollPos;
+}
+
+// header scroll animation
+if (header) {
+  const onScroll = () => {
+    if (isMenuOpen) return; 
+
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const currentScrollY = window.scrollY || 0;
+
+        if (currentScrollY <= 0) {
+          header.classList.remove('header--hidden', 'header--scrolled');
+          lastScrollY = currentScrollY;
+          ticking = false;
+          return;
         }
+
+        if (currentScrollY > lastScrollY && currentScrollY > 80) {
+          // scroll down
+          header.classList.add('header--hidden');
+          header.classList.remove('header--scrolled', 'header--menu-open');
+        } else if (currentScrollY < lastScrollY) {
+          // scroll up
+          header.classList.remove('header--hidden');
+          header.classList.add('header--scrolled');
+        }
+
+        lastScrollY = currentScrollY;
+        ticking = false;
+      });
+
+      ticking = true;
     }
-    
-    burgerBtn.addEventListener('click', toggleMenu);
-    
-    overlay.addEventListener('click', toggleMenu);
-    burgerMenu.addEventListener('click', function(e) {
-        if (e.target.tagName === 'A') {
-            toggleMenu();
-        }
-    });
-    
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && burgerMenu.classList.contains('active')) {
-            toggleMenu();
-        }
-    });
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+}
+
+
+// burger menu
+if (burgerMenu && burgerBtn) {
+  const overlay = document.createElement('div');
+  overlay.className = 'burger-overlay';
+  document.body.appendChild(overlay);
+
+  function openMenu() {
+    burgerBtn.classList.add('active');
+    burgerMenu.classList.add('active');
+    overlay.classList.add('active');
+
+    isMenuOpen = true;
+
+    header.classList.remove('header--hidden');
+    header.classList.add('header--scrolled', 'header--menu-open');
+
+    lockScroll();
+  }
+
+  function closeMenu() {
+    burgerBtn.classList.remove('active');
+    burgerMenu.classList.remove('active');
+    overlay.classList.remove('active');
+
+    isMenuOpen = false;
+
+    header.classList.remove('header--menu-open');
+
+    unlockScroll();
+  }
+
+  function toggleMenu() {
+    if (burgerMenu.classList.contains('active')) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  }
+
+  burgerBtn.addEventListener('click', toggleMenu);
+  overlay.addEventListener('click', toggleMenu);
+
+  burgerMenu.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') {
+      toggleMenu();
+    }
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && burgerMenu.classList.contains('active')) {
+      toggleMenu();
+    }
+  });
 }
 
 
@@ -89,11 +127,16 @@ const video = document.querySelector('.main-video');
 if (video) {
     const playBtn = document.querySelector('.video-play');
 
-    const toggleVideo = () => {
+    let halfLogged = false;
+
+    const toggleVideo = async () => {
         if (video.paused) {
-            video.muted = false;
-            video.play();
-            playBtn.classList.add('is-hidden');
+            try {
+                await video.play();
+                playBtn.classList.add('is-hidden');
+            } catch (e) {
+                console.warn('Play error:', e);
+            }
         } else {
             video.pause();
             playBtn.classList.remove('is-hidden');
@@ -102,6 +145,20 @@ if (video) {
 
     playBtn.addEventListener('click', toggleVideo);
     video.addEventListener('click', toggleVideo);
+
+    video.addEventListener('timeupdate', () => {
+        if (!halfLogged && video.duration && video.currentTime >= video.duration / 2) {
+            openJoinClubModal();
+            halfLogged = true;
+        }
+    });
+
+    video.addEventListener('ended', () => {
+        video.currentTime = 0;
+        video.pause();
+        playBtn.classList.remove('is-hidden');
+        halfLogged = false;
+    });
 }
 
 
@@ -123,11 +180,11 @@ if (whyDlexCards) {
             dot.className = 'pagination-dot';
 
             if (index === swiper.snapIndex) {
-            dot.classList.add('pagination-dot--active');
+                dot.classList.add('pagination-dot--active');
             }
 
             dot.addEventListener('click', () => {
-            swiper.slideTo(index);
+                swiper.slideTo(index);
             });
 
             paginationContainer.appendChild(dot);
@@ -138,9 +195,9 @@ if (whyDlexCards) {
         const dots = paginationContainer.querySelectorAll('.pagination-dot');
 
         dots.forEach((dot, index) => {
-            dot.classList.toggle(
-            'pagination-dot--active',
-            index === swiper.snapIndex
+                dot.classList.toggle(
+                'pagination-dot--active',
+                index === swiper.snapIndex
             );
         });
     }
@@ -162,20 +219,20 @@ if (whyDlexCards) {
 
         on: {
             init(swiper) {
-            renderPagination(swiper);
-            updatePagination(swiper);
-            updateArrows(swiper);
+                renderPagination(swiper);
+                updatePagination(swiper);
+                updateArrows(swiper);
             },
 
             slideChange(swiper) {
-            updatePagination(swiper);
-            updateArrows(swiper);
+                updatePagination(swiper);
+                updateArrows(swiper);
             },
 
             resize(swiper) {
-            renderPagination(swiper);
-            updatePagination(swiper);
-            updateArrows(swiper);
+                renderPagination(swiper);
+                updatePagination(swiper);
+                updateArrows(swiper);
             }
         },
 
@@ -193,19 +250,28 @@ if (whyDlexCards) {
 const joinClubModal = document.querySelector('.join-club-modal');
 const closeJoinClubBtn = document.querySelector('.close-club-modal');
 
+let wasPlayingBeforeModal = false;
+
 if (joinClubModal) {
     function openJoinClubModal() {
-        if (!joinClubModal) return;
+        wasPlayingBeforeModal = !video.paused; 
+        video.pause();
 
         joinClubModal.classList.add('is-active');
         document.documentElement.classList.add('no-scroll');
     }
 
     function closeJoinClubModal() {
-        if (!joinClubModal) return;
-
         joinClubModal.classList.remove('is-active');
         document.documentElement.classList.remove('no-scroll');
+
+        if (wasPlayingBeforeModal && video.currentTime < video.duration) {
+            try {
+               video.play();
+            } catch (e) {
+                console.warn('Play after modal error:', e);
+            }
+        }
     }
 
 
@@ -214,8 +280,6 @@ if (joinClubModal) {
             closeJoinClubModal();
         }
     });
-
- 
 }
 
 

@@ -9,7 +9,7 @@
     <title>Dlex</title>
 </head>
 <body>
-    <div class="blur-container">
+    <div class="page">
         <header class="header">
             <div class="header-inner">
                 <div class="header-left">
@@ -31,7 +31,7 @@
                             Sign In
                         </button>
 
-                        <button class="sign-up-btn">
+                        <button class="sign-up-btn" onclick="openJoinClubModal();">
                             Sign Up
                         </button>
 
@@ -55,7 +55,7 @@
                     </nav>
 
                     <div class="burger-buttons">
-                        <button class="sign-up-btn">
+                        <button class="sign-up-btn" onclick="openJoinClubModal();">
                             Sign Up
                         </button>
 
@@ -138,9 +138,7 @@
                             <video
                                 class="main-video"
                                 preload="metadata"
-                                muted
                                 playsinline
-                                loop
                             >
                                 <source src="videos/ocean.mp4" type="video/mp4" />
                             </video>
@@ -597,7 +595,7 @@
                         </div>
 
                         <div class="you-need-right">
-                            <button class="you-need-btn">
+                            <button class="you-need-btn" onclick="openJoinClubModal();">
                                 Get Started Now
                             </button>
                         </div>
@@ -617,7 +615,7 @@
                             Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint velit officia consequat duis enim velit mollit.
                         </p>
 
-                        <button class="boost-productivity-btn">
+                        <button class="boost-productivity-btn" onclick="openJoinClubModal();" >
                             Sign up for free
                         </button>
                     </div>
@@ -743,52 +741,52 @@
                 </div>
             </div>
         </footer>
-
-        <!-- Join the club modal -->
-        <div class="join-club-modal">
-            <div class="join-club-modal-content">
-                <div class="join-club-modal-content-left">
-                    <img src="images/svg/logo.svg" alt="">
-
-                    <h3 class="join-club-modal-title">
-                        Join the club
-                    </h3>
-
-                    <p class="join-club-modal-desc">
-                        Subscribe and Get an Extra<br>
-                        25% Off on your first purchase.
-                    </p>
-
-                    <form class="join-club-form" novalidate>
-                        <div class="form-input">
-                            <input type="email" name="email" placeholder="Email address">
-                            <span class="form-input-error">Please enter email</span>
-                        </div>
-
-                        <button class="send-form-btn" >
-                            Subscribe
-                        </button>
-
-                        <p class="join-club-policy">
-                            By signing up, you agree to Privacy Policy
-                            and Terms of Use.
-                        </p>
-                    </form>
-                </div>
-
-                <div class="join-the-club-modal-content-right">
-                    <img src="images/join-club-modal.png" alt="">
-                </div>
-
-                <button class="close-club-modal" type="button" onclick="closeJoinClubModal();">
-                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="22.0383" y="6.48181" width="3.66667" height="22" transform="rotate(45 22.0383 6.48181)" fill="white"/>
-                        <rect x="24.6308" y="22.0382" width="3.66667" height="22" transform="rotate(135 24.6308 22.0382)" fill="white"/>
-                    </svg>
-                </button>
-            </div>
-        </div> 
     </div>
+
+    <!-- Join the club modal -->
+    <div class="join-club-modal">
+        <div class="join-club-modal-content">
+            <div class="join-club-modal-content-left">
+                <img src="images/svg/logo.svg" alt="">
+
+                <h3 class="join-club-modal-title">
+                    Join the club
+                </h3>
+
+                <p class="join-club-modal-desc">
+                    Subscribe and Get an Extra<br>
+                    25% Off on your first purchase.
+                </p>
+
+                <form class="join-club-form" novalidate>
+                    <div class="form-input">
+                        <input type="email" name="email" placeholder="Email address">
+                        <span class="form-input-error">Please enter email</span>
+                    </div>
+
+                    <button class="send-form-btn" >
+                        Subscribe
+                    </button>
+
+                    <p class="join-club-policy">
+                        By signing up, you agree to Privacy Policy
+                        and Terms of Use.
+                    </p>
+                </form>
+            </div>
+
+            <div class="join-the-club-modal-content-right">
+                <img src="images/join-club-modal.png" alt="">
+            </div>
+
+            <button class="close-club-modal" type="button" onclick="closeJoinClubModal();">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="22.0383" y="6.48181" width="3.66667" height="22" transform="rotate(45 22.0383 6.48181)" fill="white"/>
+                    <rect x="24.6308" y="22.0382" width="3.66667" height="22" transform="rotate(135 24.6308 22.0382)" fill="white"/>
+                </svg>
+            </button>
+        </div>
+    </div> 
 
     <script src="js/libs/swiper-bundle.min.js"></script>
     <script src="js/scripts.js"></script>
