@@ -1206,7 +1206,7 @@ input[type=number] {
 }
 .footer .footer-copyright-text {
   font-family: "Poppins Regular", sans-serif;
-  font-size: 16px;
+  font-size: clamp(0.875rem, 0.85rem + 0.13vw, 1rem);
   line-height: 180%;
   color: rgba(18, 17, 39, 0.56);
 }
